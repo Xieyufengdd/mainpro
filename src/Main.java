@@ -12,7 +12,7 @@ public class Main {
         while (scanner.hasNextLine()){
             str = scanner.nextLine();
 
-            if (str.isEmpty())break;
+            //if (str.isEmpty())break;
 
             char[] ch = str.toCharArray();
             int len = str.length();
@@ -42,12 +42,12 @@ public class Main {
                             break Label;
                         }else if (ch[i+1] == '*'){
                             i+=2;
-                            for (;i<len-1;i++){
-                                if (ch[i] == '*'){
+                            for (;i<len-1||len==0;i++){
+                                if (len!=0&&ch[i] == '*'){
                                     if (ch[i+1]=='/'){
                                         i++;
                                         continue Label;
-                                    }
+                                    }else continue ;
                                 }if (i == len - 2){
                                     str = scanner.nextLine();
                                     ch = str.toCharArray();
