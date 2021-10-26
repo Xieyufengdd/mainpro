@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,10 +12,11 @@ public class Main {
         while (scanner.hasNextLine()){
             str = scanner.nextLine();
 
-            //if (str.isEmpty())break;
+            if (str.isEmpty())break;
 
             char[] ch = str.toCharArray();
             int len = str.length();
+            Label:
             for (int i=0; i<len; i++){
                 switch (ch[i]) {
                     case ' ':
@@ -35,6 +37,25 @@ public class Main {
                     case '}':
                         strings.add("}");
                         break;
+                    case '/':
+                        if (ch[i+1] == '/'){
+                            break Label;
+                        }else if (ch[i+1] == '*'){
+                            i+=2;
+                            for (;i<len-1;i++){
+                                if (ch[i] == '*'){
+                                    if (ch[i+1]=='/'){
+                                        i++;
+                                        continue Label;
+                                    }
+                                }if (i == len - 2){
+                                    str = scanner.nextLine();
+                                    ch = str.toCharArray();
+                                    len = str.length();
+                                    i=-1;
+                                }
+                            }
+                        }
                     case '0':
                     case '1':
                     case '2':
