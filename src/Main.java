@@ -135,7 +135,6 @@ public class Main {
             System.out.println("define dso_local i32 @main(){\n" +
                     "    ret i32 " + strings.get(6) +
                     "\n}");
-            System.exit(Integer.valueOf(strings.get(6)));
         }else System.exit(-1);//error
     }
 
