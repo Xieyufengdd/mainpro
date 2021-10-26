@@ -12,7 +12,7 @@ public class Main {
         while (scanner.hasNextLine()){
             str = scanner.nextLine();
 
-            if (str.isEmpty())break;
+            //if (str.isEmpty())break;
 
             char[] ch = str.toCharArray();
             int len = str.length();
