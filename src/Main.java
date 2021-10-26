@@ -1,9 +1,8 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    private static ArrayList<String> strings = new ArrayList<>();
+    private static final ArrayList<String> strings = new ArrayList<>();
     private static int index;
     private static String sym;
     public static void main(String[] args) {
@@ -122,9 +121,7 @@ public class Main {
                             case "int" -> strings.add("i32");
                             case "main" -> strings.add("@main");
                             case "return" -> strings.add("ret");
-                            default -> {
-                                System.exit(-1); //Error
-                            }
+                            default -> System.exit(-1); //Error
                         }
                         break;
                     default:
@@ -134,10 +131,11 @@ public class Main {
         }
         index = 0;
         sym = nextString();
-        if (compUnit() == true){
+        if (compUnit()){
             System.out.println("define dso_local i32 @main(){\n" +
                     "    ret i32 " + strings.get(6) +
                     "\n}");
+            System.exit(Integer.valueOf(strings.get(6)));
         }else System.exit(-1);//error
     }
 
@@ -153,8 +151,8 @@ public class Main {
     }
 
     static boolean funcDef(){
-        if (funcType() == false)return false;
-        if (ident() == false)return  false;
+        if (!funcType())return false;
+        if (!ident())return  false;
         if (sym.equals("(")){
             sym = nextString();
             if (sym != null){
@@ -183,11 +181,10 @@ public class Main {
     static boolean block(){
         if (sym.equals("{")){
             sym = nextString();
-            if (stmt() == false)return false;
+            if (!stmt())return false;
             if (sym.equals("}")){
                 sym = nextString();
-                if (sym != null)return false;
-                else return true;
+                return sym == null;
             }else return false;
         }else return false;
     }
@@ -195,7 +192,7 @@ public class Main {
     static boolean stmt(){
         if (sym.equals("ret")){
             sym = nextString();
-            if (number() == false)return false;
+            if (!number())return false;
             if (sym.equals(";")){
                 sym = nextString();
                 return true;
