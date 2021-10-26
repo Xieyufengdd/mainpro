@@ -12,7 +12,7 @@ public class Main {
         while (scanner.hasNextLine()){
             str = scanner.nextLine();
 
-            //if (str.isEmpty())break;
+            if (str.isEmpty())break;
 
             char[] ch = str.toCharArray();
             int len = str.length();
@@ -234,10 +234,10 @@ public class Main {
             int num=0;
             if (c[0] == '0' && (c[1]=='x'||c[1]=='X')){
                 for (int i=2;i<sym.length();i++){
-                    if (c[i]<='9'&&c[i]>='0' ||c[i]<='a'&&c[i]>='f'||c[i]<='A'&&c[i]>='F'){
+                    if (c[i]<='9'&&c[i]>='0' ||c[i]>='a'&&c[i]<='f'||c[i]>='A'&&c[i]<='F'){
                         num *= 16;
                         if (c[i]<='9'&&c[i]>='0')num += c[i] - '0';
-                        else if (c[i]<='a'&&c[i]>='f')num += 10 + c[i] - 'a';
+                        else if (c[i]>='a'&&c[i]<='f')num += 10 + c[i] - 'a';
                         else num += 10 + c[i] - 'A';
                     }else return false;
                 }
