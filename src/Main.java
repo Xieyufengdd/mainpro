@@ -49,6 +49,7 @@ public class Main {
                                         continue Label;
                                     }else continue ;
                                 }if (i == len - 2){
+                                    if (!scanner.hasNextLine())System.exit(-1);
                                     str = scanner.nextLine();
                                     ch = str.toCharArray();
                                     len = str.length();
