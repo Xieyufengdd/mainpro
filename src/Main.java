@@ -42,19 +42,22 @@ public class Main {
                             break Label;
                         }else if (ch[i+1] == '*'){
                             i+=2;
-                            for (;i<len-1||len==0;i++){
-                                if (len!=0&&ch[i] == '*'){
-                                    if (ch[i+1]=='/'){
-                                        i++;
-                                        continue Label;
-                                    }else continue ;
-                                }if (i == len - 2){
+                            for (;i<=len||len==0;i++){
+                                if (i >= len - 2){
                                     if (!scanner.hasNextLine())System.exit(-1);
                                     str = scanner.nextLine();
                                     ch = str.toCharArray();
                                     len = str.length();
                                     i=-1;
+                                    continue ;
                                 }
+                                if (len!=0&&ch[i] == '*'){
+                                    if (ch[i+1]=='/'){
+                                        i++;
+                                        continue Label;
+                                    }else continue ;
+                                }
+
                             }
                         }
                         break ;
