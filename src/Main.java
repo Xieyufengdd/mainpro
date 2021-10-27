@@ -43,7 +43,7 @@ public class Main {
                         }else if (ch[i+1] == '*'){
                             i+=2;
                             for (;i<=len||len==0;i++){
-                                if (i >= len - 2){
+                                if (i >= len - 1){
                                     if (!scanner.hasNextLine())System.exit(-1);
                                     str = scanner.nextLine();
                                     ch = str.toCharArray();
